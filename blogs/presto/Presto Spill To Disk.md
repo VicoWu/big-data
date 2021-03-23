@@ -1,4 +1,28 @@
-[TOC]
+- [Revoke Memory Basic Strategy：](#revoke-memory-basic-strategy-)
+- [Memory Revoking Scheduling](#memory-revoking-scheduling)
+  * [How Memory Revoking is Triggered](#how-memory-revoking-is-triggered)
+    + [Triggered by Registered Listener](#triggered-by-registered-listener)
+    + [Triggered by Periodical Scheduling](#triggered-by-periodical-scheduling)
+    + [Revoking Condition and Revoking Memory Amount](#revoking-condition-and-revoking-memory-amount)
+  * [How Memory Revoking is Triggered](#how-memory-revoking-is-triggered-1)
+- [Operators](#operators)
+  * [HashBuilderOperator](#hashbuilderoperator)
+    + [Unspill the Lookup Source](#unspill-the-lookup-source)
+    + [Partition Count Decision](#partition-count-decision)
+  * [LookupJoinOperator](#lookupjoinoperator)
+    + [Spiller for LookupJoinOperator: GenericPartitioningSpiller](#spiller-for-lookupjoinoperator--genericpartitioningspiller)
+    + [Spilling Mask for HashBuildOperator and LookupJoinOperator](#spilling-mask-for-hashbuildoperator-and-lookupjoinoperator)
+    + [Try to Unspill the LookupSource](#try-to-unspill-the-lookupsource)
+    + [HashGenerator for Probe](#hashgenerator-for-probe)
+  * [Spilling in Window](#spilling-in-window)
+  * [Spilling in Sort](#spilling-in-sort)
+  * [Spilling In Aggregation](#spilling-in-aggregation)
+  * [**SingleStreamSpillerFactory**](#--singlestreamspillerfactory--)
+  * [**PartitioningSpillerFactory**](#--partitioningspillerfactory--)
+- [References](#references)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 # Revoke Memory Basic Strategy：
 
