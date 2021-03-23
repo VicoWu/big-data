@@ -1,37 +1,16 @@
-## Welcome to GitHub Pages
+# Welcome to Chang Wu's Github Pages
 
 You can use the [editor on GitHub](https://github.com/VicoWu/big-data/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Presto Spill to Disk Deep Dive
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+By default, Presto kills queries if the memory requested by the query execution exceeds session properties `query_max_memory` or `query_max_memory_per_node`. This mechanism ensures fairness in allocation of memory to queries and prevents deadlock caused by memory allocation. It is efficient when there is a lot of small queries in the cluster, but leads to killing large queries that don’t stay within the limits.
 
-```markdown
-Syntax highlighted code block
+To overcome this inefficiency, the concept of revocable memory was introduced. A query can request memory that does not count toward the limits, but this memory can be revoked by the memory manager at any time. When memory is revoked, the query runner spills intermediate data from memory to disk and continues to process it later.
 
-# Header 1
-## Header 2
-### Header 3
+Check the detail
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/VicoWu/big-data/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
