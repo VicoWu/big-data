@@ -4,6 +4,7 @@ You can use the [editor on GitHub](https://github.com/VicoWu/big-data/edit/gh-pa
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
+<span style="color:blue">
 ## Presto Spill to Disk Deep Dive
 
 By default, Presto kills queries if the memory requested by the query execution exceeds session properties `query_max_memory` or `query_max_memory_per_node`. This mechanism ensures fairness in allocation of memory to queries and prevents deadlock caused by memory allocation. It is efficient when there is a lot of small queries in the cluster, but leads to killing large queries that don’t stay within the limits.
@@ -12,5 +13,6 @@ To overcome this inefficiency, the concept of revocable memory was introduced. A
 
 Check the detail
 
+</span>
 
 
