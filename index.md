@@ -13,7 +13,7 @@ By default, Presto kills queries if the memory requested by the query execution 
 
 To overcome this inefficiency, the concept of revocable memory was introduced. A query can request memory that does not count toward the limits, but this memory can be revoked by the memory manager at any time. When memory is revoked, the query runner spills intermediate data from memory to disk and continues to process it later.
 
-Check the detail
+[Check the detail](blogs/presto/Presto%20Spill%20To%20Disk)
 
 * * *
 - - -
